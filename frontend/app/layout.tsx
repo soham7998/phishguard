@@ -61,7 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <StructuredData />
       </head>
-      <body className="min-h-screen bg-[#050810] text-slate-200 antialiased font-[family-name:var(--font-geist)]">
+      <body className={`${geist.className} min-h-screen bg-[#050810] text-slate-200 antialiased`}>
         <Navbar />
         <main>{children}</main>
         <Footer />
