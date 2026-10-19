@@ -60,8 +60,8 @@
 >
 > The core engine is MIT-licensed. Self-host with `docker-compose up`. Free hosted tier: 50 req/day.
 >
-> Demo: https://phishguard.dev/playground
-> GitHub: https://github.com/yourusername/phishguard
+> Demo: https://phishguardapi.vercel.app/playground
+> GitHub: https://github.com/soham7998/phishguard
 >
 > Would love feedback on what sources to add next — IPQS, Google Safe Browsing, or something else?
 
@@ -104,7 +104,7 @@
 >
 > If you work in security, build security tools, or are just tired of manually checking URLs — give it a try. Feedback welcome 🙏
 >
-> 🔗 https://phishguard.dev
+> 🔗 https://phishguardapi.vercel.app
 >
 > #cybersecurity #api #phishing #threatintelligence #buildinpublic #opensource
 
@@ -136,8 +136,8 @@
 >
 > Free hosted tier: 50 req/day, no card.
 >
-> Playground (no key needed): https://phishguard.dev/playground
-> GitHub: https://github.com/yourusername/phishguard
+> Playground (no key needed): https://phishguardapi.vercel.app/playground
+> GitHub: https://github.com/soham7998/phishguard
 >
 > Curious what additional sources the community would want — IPQS, OpenPhish, Google Safe Browsing?
 
@@ -203,7 +203,7 @@
 >
 > Free tier: 50 analyses/day, no card. Open-source core on GitHub (MIT).
 >
-> Live demo: https://phishguard.dev/playground
+> Live demo: https://phishguardapi.vercel.app/playground
 >
 > Would this be worth a mention in [newsletter/directory]? Happy to provide more details or a write-up.
 >

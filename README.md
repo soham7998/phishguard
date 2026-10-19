@@ -18,7 +18,7 @@ curl -X POST https://api.phishguard.dev/v1/analyze \
 # → { "risk_score": 94, "verdict": "MALICIOUS", "risk_reasons": [...] }
 ```
 
-**[Live demo](https://phishguard.dev/playground)** · **[API docs](https://phishguard.dev/docs)** · **[Free API key](https://phishguard.dev/pricing)**
+**[Live demo](https://phishguardapi.vercel.app/playground)** · **[API docs](https://phishguardapi.vercel.app/docs)** · **[Free API key](https://phishguardapi.vercel.app/pricing)**
 
 ---
 
@@ -48,7 +48,7 @@ PhishGuard runs **7 enrichment checks in parallel** and returns a single JSON wi
 
 ```bash
 # 1. Clone
-git clone https://github.com/yourusername/phishguard
+git clone https://github.com/soham7998/phishguard
 cd phishguard
 
 # 2. Configure
@@ -116,7 +116,7 @@ Retrieve a cached result (7–90 days depending on plan).
 ### `GET /v1/usage`
 Check daily quota and usage history.
 
-Full reference: [phishguard.dev/docs](https://phishguard.dev/docs) · Swagger UI: `/docs`
+Full reference: [phishguard.dev/docs](https://phishguardapi.vercel.app/docs) · Swagger UI: `/docs`
 
 ---
 
@@ -237,6 +237,6 @@ MIT — free for personal and commercial use. See [LICENSE](LICENSE).
 
 ## Built by
 
-**Soham Shah** · Cybersecurity enthusiast & SIEM engineer · [LinkedIn](https://linkedin.com/in/sohamshah) · [SentinelTI](https://sentinelti-product.vercel.app)
+**Soham Shah** · Cybersecurity enthusiast & SIEM engineer · [LinkedIn](https://linkedin.com/in/shahsoham2003) · [SentinelTI](https://sentinelti-product.vercel.app)
 
 > *"Phishing is the most common cyberattack vector. Detection should be a one-line API call."*

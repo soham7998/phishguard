@@ -38,7 +38,7 @@ export function StructuredData() {
         "author": {
           "@type": "Person",
           "name": "Soham Shah",
-          "url": "https://linkedin.com/in/sohamshah"
+          "url": "https://linkedin.com/in/shahsoham2003"
         }
       },
       {

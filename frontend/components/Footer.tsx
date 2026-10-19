@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Shield, Github, Twitter } from "lucide-react";
+import { Shield, Github } from "lucide-react";
 
 const cols = [
   {
@@ -58,7 +58,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-3">
               <a
-                href="https://github.com/yourusername/phishguard"
+                href="https://github.com/soham7998/phishguard"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-500 hover:text-white transition-colors"
@@ -66,12 +66,14 @@ export default function Footer() {
                 <Github className="w-5 h-5" />
               </a>
               <a
-                href="https://twitter.com/phishguardapi"
+                href="https://linkedin.com/in/shahsoham2003"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-500 hover:text-white transition-colors"
               >
-                <Twitter className="w-5 h-5" />
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/>
+                </svg>
               </a>
             </div>
           </div>
@@ -101,7 +103,7 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t border-[#1e2433] flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-slate-600">
             © {new Date().getFullYear()} PhishGuard. Built by{" "}
-            <a href="https://linkedin.com/in/sohamshah" className="text-indigo-400 hover:text-indigo-300">
+            <a href="https://linkedin.com/in/shahsoham2003" className="text-indigo-400 hover:text-indigo-300">
               Soham Shah
             </a>
             {" "}— Cybersecurity enthusiast & SIEM engineer.
