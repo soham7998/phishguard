@@ -23,8 +23,13 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-geist), 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+/* ── Terminal / mono uses Geist Mono ── */
+.terminal, pre, code {
+  font-family: var(--font-geist-mono), 'JetBrains Mono', 'Fira Code', monospace !important;
 }
 
 /* ── Scrollbar ── */
@@ -173,7 +178,6 @@ body {
 
 /* ── Code block ── */
 pre code {
-  font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
   font-size: 13px !important;
 }
 

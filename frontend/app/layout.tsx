@@ -1,8 +1,21 @@
 import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { StructuredData } from "@/components/StructuredData";
+
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist",
+  display: "swap",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -18,13 +31,21 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Soham Shah", url: "https://linkedin.com/in/sohamshah" }],
   creator: "Soham Shah — Cybersecurity enthusiast & SIEM engineer",
-  metadataBase: new URL("https://phishguard.dev"),
-  alternates: { canonical: "https://phishguard.dev" },
+  metadataBase: new URL("https://phishguard.vercel.app"),
+  alternates: { canonical: "https://phishguard.vercel.app" },
+  icons: {
+    icon: [
+      { url: "/favicon.svg",  type: "image/svg+xml" },
+      { url: "/favicon.ico",  sizes: "any" },
+    ],
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon.svg",
+  },
   openGraph: {
     title: "PhishGuard — Phishing URL Analyzer API",
     description: "Detect phishing URLs in one API call. Risk score 0–100 + MALICIOUS/CLEAN verdict. Free tier.",
     type: "website",
-    url: "https://phishguard.dev",
+    url: "https://phishguard.vercel.app",
     siteName: "PhishGuard",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "PhishGuard API" }],
   },
@@ -42,17 +63,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
-          rel="stylesheet"
-        />
         <StructuredData />
       </head>
-      <body className="min-h-screen bg-[#050810] text-slate-200 antialiased">
+      <body className="min-h-screen bg-[#050810] text-slate-200 antialiased font-[family-name:var(--font-geist)]">
         <Navbar />
         <main>{children}</main>
         <Footer />
