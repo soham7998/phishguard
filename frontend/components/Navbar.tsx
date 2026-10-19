@@ -1,87 +1,125 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Shield, Menu, X, Zap } from "lucide-react";
+import { Menu, X, Sun, Moon, Zap } from "lucide-react";
+import { useTheme } from "./ThemeProvider";
 
 const links = [
-  { href: "/#features", label: "Features" },
-  { href: "/#how-it-works", label: "How it works" },
-  { href: "/playground", label: "Playground" },
-  { href: "/docs", label: "Docs" },
-  { href: "/pricing", label: "Pricing" },
+  { href: "/#features",    label: "Features" },
+  { href: "/#how-it-works",label: "How it works" },
+  { href: "/playground",   label: "Playground" },
+  { href: "/docs",         label: "Docs" },
+  { href: "/pricing",      label: "Pricing" },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled]   = useState(false);
+  const [open, setOpen]           = useState(false);
+  const { theme, toggle }         = useTheme();
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handler);
-    return () => window.removeEventListener("scroll", handler);
+    const fn = () => setScrolled(window.scrollY > 16);
+    window.addEventListener("scroll", fn, { passive: true });
+    return () => window.removeEventListener("scroll", fn);
   }, []);
+
+  const isLight = theme === "light";
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "nav-glass" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+        scrolled ? "nav-glass shadow-sm" : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center group-hover:bg-indigo-500 transition-colors">
-              <Shield className="w-4 h-4 text-white" />
-            </div>
-            <span className="font-bold text-white text-lg tracking-tight">
-              Phish<span className="text-indigo-400">Guard</span>
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <div className="flex items-center justify-between h-[60px]">
+
+          {/* Logo — bloo.io style: wordmark, no icon */}
+          <Link href="/" className="flex items-center gap-0 group">
+            <span
+              className="text-[17px] font-bold tracking-[-0.03em] transition-opacity group-hover:opacity-75"
+              style={{ color: "var(--text)", fontFamily: "Inter, sans-serif" }}
+            >
+              phish<span style={{ color: "var(--accent)" }}>guard</span>
             </span>
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-0.5">
             {links.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
-                className="px-3 py-2 text-sm text-slate-400 hover:text-white transition-colors rounded-lg hover:bg-white/5"
+                className="px-3.5 py-2 text-[13.5px] font-medium rounded-lg transition-colors"
+                style={{ color: "var(--text-dim)" }}
+                onMouseEnter={e => (e.currentTarget.style.color = "var(--text)")}
+                onMouseLeave={e => (e.currentTarget.style.color = "var(--text-dim)")}
               >
                 {l.label}
               </Link>
             ))}
           </div>
 
-          {/* CTA */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Right: theme toggle + CTA */}
+          <div className="hidden md:flex items-center gap-2">
+            {/* Dark/Light toggle */}
+            <button
+              onClick={toggle}
+              className="w-8 h-8 rounded-lg flex items-center justify-center transition-colors"
+              style={{ color: "var(--text-muted)", background: "transparent" }}
+              onMouseEnter={e => (e.currentTarget.style.background = "var(--surface2)")}
+              onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
+              aria-label="Toggle theme"
+              title={isLight ? "Switch to dark mode" : "Switch to light mode"}
+            >
+              {isLight
+                ? <Moon className="w-4 h-4" />
+                : <Sun className="w-4 h-4" />
+              }
+            </button>
+
             <Link
               href="/playground"
-              className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-indigo-500/25"
+              className="btn-primary text-[13px] py-[7px] px-[14px]"
             >
-              <Zap className="w-3.5 h-3.5" />
-              Try free
+              Try free →
             </Link>
           </div>
 
-          {/* Mobile toggle */}
-          <button
-            className="md:hidden text-slate-400 hover:text-white"
-            onClick={() => setOpen(!open)}
-          >
-            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+          {/* Mobile: theme + menu */}
+          <div className="md:hidden flex items-center gap-1.5">
+            <button
+              onClick={toggle}
+              className="w-8 h-8 rounded-lg flex items-center justify-center"
+              style={{ color: "var(--text-muted)" }}
+              aria-label="Toggle theme"
+            >
+              {isLight ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
+            </button>
+            <button
+              onClick={() => setOpen(!open)}
+              className="w-8 h-8 flex items-center justify-center"
+              style={{ color: "var(--text-muted)" }}
+            >
+              {open ? <X className="w-4.5 h-4.5" /> : <Menu className="w-4.5 h-4.5" />}
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden nav-glass border-t border-slate-800 px-4 py-4 space-y-1">
+        <div
+          className="md:hidden border-t px-5 py-4 space-y-1"
+          style={{ background: "var(--bg)", borderColor: "var(--border)" }}
+        >
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="block px-3 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+              className="block px-3 py-2.5 text-[14px] rounded-lg transition-colors"
+              style={{ color: "var(--text-dim)" }}
             >
               {l.label}
             </Link>
@@ -89,9 +127,9 @@ export default function Navbar() {
           <Link
             href="/playground"
             onClick={() => setOpen(false)}
-            className="block mt-2 px-3 py-2.5 text-sm font-medium text-center bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg transition-colors"
+            className="btn-primary w-full justify-center mt-3 text-[14px]"
           >
-            Try free
+            Try free →
           </Link>
         </div>
       )}
